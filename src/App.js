@@ -7,15 +7,17 @@ import PetItem from "./components/PetItem";
 import PetList from "./components/PetList";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import instance from "./api.js";
+import instance from "./apis/index.js";
+import { getPets } from "./apis/pets.js";
 
 function App() {
   const response = useQuery({
     queryKey: ["test"],
     queryFn: () =>
-      instance.get("https://coded-pets-api-crud.eapi.joincoded.com/pets	"),
+      instance.get("https://coded-pets-api-crud.eapi.joincoded.com/pets"),
+    // getPets(),
   });
-  console.log(response?.data?.data);
+  console.log(response);
   return (
     <div className="font-mono">
       <Navbar />
